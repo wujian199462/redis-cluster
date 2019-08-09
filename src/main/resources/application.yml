@@ -1,0 +1,36 @@
+server:
+  port: 8081
+spring:
+  #s数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/jeremy?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  ## redis 配置
+  redis:
+    database: 0
+#    host: 47.106.241.205
+#    port: 6379
+#    password: 123456
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 10000
+    cluster:
+      nodes:
+        - 192.168.107.49:9001
+        - 192.168.107.49:9002
+        - 192.168.107.49:9003
+        - 192.168.107.49:9004
+        - 192.168.107.49:9005
+        - 192.168.107.49:9006
+        
+  ## ehcache配置
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:app1_ehcache.xml
